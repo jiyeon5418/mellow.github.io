@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mellow | Blog</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #fff;
+    color: #222;
+    font-family: Arial, "Noto Sans KR", sans-serif;
+    line-height: 1.7;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+header {
+    height: 72px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 9%;
+}
+.logo {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+.logo span {
+    color: #238b57;
+}
+nav {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    color: #555;
+}
+nav a:hover {
+    color: #238b57;
+}
+.container {
+    max-width: 1100px;
+    margin: 65px auto;
+    padding: 0 25px;
+}
+.intro {
+    margin-bottom: 65px;
+}
+.intro h1 {
+    font-size: 34px;
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+}
+.intro p {
+    color: #777;
+    font-size: 15px;
+}
+.content {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    gap: 65px;
+}
+.sidebar h3 {
+    font-size: 15px;
+    margin: 0 0 18px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar li {
+    margin-bottom: 13px;
+    font-size: 14px;
+    color: #777;
+}
+.sidebar a:hover {
+    color: #238b57;
+}
+.posts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    padding-bottom: 12px;
+    margin-bottom: 5px;
+}
+.posts-header h2 {
+    font-size: 19px;
+    margin: 0;
+}
+.post {
+    min-height: 85px;
+    padding: 23px 0;
+    border-bottom: 1px solid #eee;
+}
+footer {
+    border-top: 1px solid #eee;
+    text-align: center;
+    padding: 30px;
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 80px;
+}
+@media(max-width:700px) {
+    header {
+        padding: 0 20px;
+    }
+    nav {
+        gap: 13px;
+        font-size: 12px;
+    }
+    .container {
+        margin-top: 40px;
+    }
+    .content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .sidebar ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .intro h1 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo">mellow<span>.</span></a>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#posts">Posts</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <h1>나만의 블로그</h1>
+        <p>
+            개발과 사이버보안을 공부하며 배운 것들을 기록합니다.<br>
+            작은 개념부터 직접 실습한 내용까지 차근차근 정리합니다.
+        </p>
+    </section>
+
+    <div class="content">
+
+        <aside class="sidebar" id="categories">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="#development">Development</a></li>
+                <li><a href="#ctf">CTF / Wargame</a></li>
+                <li><a href="#bugbounty">Bug Bounty</a></li>
+                <li><a href="#technical">Technical Notes</a></li>
+                <li><a href="#papers">Papers / Conferences</a></li>
+                <li><a href="#activities">Activities / Certifications</a></li>
+            </ul>
+        </aside>
+
+        <section id="posts">
+            <div class="posts-header">
+                <h2>Recent Posts</h2>
+                <span style="font-size:12px;color:#999;">Latest updates</span>
+            </div>
+
+            <article class="post" id="development"></article>
+            <article class="post" id="ctf"></article>
+            <article class="post" id="bugbounty"></article>
+            <article class="post" id="technical"></article>
+            <article class="post" id="papers"></article>
+            <article class="post" id="activities"></article>
+
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    © 2026 mellow. All rights reserved.
+</footer>
+
+</body>
+</html>
