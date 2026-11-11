@@ -381,7 +381,7 @@ function parsePost(markdown, filename) {
     }
 
     function getField(name, fallback = "") {
-        const result = metadata.match(new RegExp("^" + name + ":\\\\s*(.*)$", "m"));
+        const result = metadata.match(new RegExp("^" + name + ":\\s*(.*)$", "m"));
         return result ? cleanValue(result[1]) : fallback;
     }
 
