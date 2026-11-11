@@ -28,7 +28,6 @@ a {
     text-decoration: none;
 }
 
-/* Header */
 header {
     height: 76px;
     border-bottom: 1px solid #e8e7df;
@@ -59,14 +58,12 @@ nav a:hover {
     color: #63866c;
 }
 
-/* Main */
 .container {
     max-width: 1200px;
     margin: 75px auto;
     padding: 0 35px;
 }
 
-/* Introduction */
 .intro {
     margin-bottom: 75px;
 }
@@ -84,14 +81,12 @@ nav a:hover {
     line-height: 2;
 }
 
-/* Layout */
 .content {
     display: grid;
     grid-template-columns: 190px 1fr;
     gap: 65px;
 }
 
-/* Sidebar */
 .sidebar {
     position: sticky;
     top: 35px;
@@ -117,11 +112,12 @@ nav a:hover {
     color: #858a84;
 }
 
-.sidebar a:hover {
+.sidebar a:hover,
+.sidebar a.active {
     color: #63866c;
+    font-weight: 700;
 }
 
-/* Posts Header */
 .posts-header {
     display: flex;
     justify-content: space-between;
@@ -142,41 +138,89 @@ nav a:hover {
     color: #999;
 }
 
-/* Post */
-.post {
-    padding: 30px 0;
+.post-card {
+    padding: 25px 0;
     border-bottom: 1px solid #e7e6df;
     transition: padding 0.2s;
-    scroll-margin-top: 30px;
 }
 
-.post:hover {
+.post-card:hover {
     padding-left: 10px;
 }
 
-/* Category */
-.category {
+.post-category {
+    color: #63866c;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.post-card h3 {
+    font-size: 22px;
+    letter-spacing: -0.8px;
+    margin: 0 0 7px;
+    font-weight: 700;
+}
+
+.post-card h3 a:hover {
+    color: #63866c;
+}
+
+.post-meta {
+    color: #a0a49e;
+    font-size: 13px;
+}
+
+.empty-message {
+    padding: 40px 0;
+    color: #999;
+    font-size: 14px;
+}
+
+.back-button {
+    border: 0;
+    background: none;
+    color: #63866c;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+    margin: 25px 0;
+    font-family: inherit;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.detail-category {
     color: #63866c;
     font-size: 14px;
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 
-/* Title */
-.post h3 {
-    font-size: 23px;
-    letter-spacing: -0.8px;
+.detail-title {
+    font-size: 30px;
+    letter-spacing: -1px;
+    line-height: 1.5;
     margin: 0 0 10px;
-    font-weight: 700;
 }
 
-/* Date */
-.post time {
+.detail-date {
     color: #a0a49e;
-    font-size: 14px;
+    font-size: 13px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e7e6df;
 }
 
-/* Footer */
+.post-content {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 2;
+    margin-top: 30px;
+    font-size: 15px;
+}
+
 footer {
     border-top: 1px solid #e8e7df;
     text-align: center;
@@ -186,7 +230,6 @@ footer {
     margin-top: 100px;
 }
 
-/* Mobile */
 @media(max-width:700px) {
     header {
         padding: 0 20px;
@@ -229,8 +272,12 @@ footer {
         margin-bottom: 8px;
     }
 
-    .post h3 {
+    .post-card h3 {
         font-size: 20px;
+    }
+
+    .detail-title {
+        font-size: 25px;
     }
 }
 </style>
@@ -239,13 +286,14 @@ footer {
 <body>
 
 <header>
-    <a href="#" class="logo">mellow<span>.</span></a>
+    <a href="index.html" class="logo">mellow<span>.</span></a>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="#categories">Categories</a>
         <a href="#posts">Posts</a>
+        <a href="write.html">Write</a>
     </nav>
 </header>
 
@@ -264,59 +312,28 @@ footer {
         <aside class="sidebar" id="categories">
             <h3>Categories</h3>
             <ul>
-                <li><a href="#development">Development</a></li>
-                <li><a href="#ctf">CTF / Wargame</a></li>
-                <li><a href="#bugbounty">Bug Bounty</a></li>
-                <li><a href="#technical">Technical Notes</a></li>
-                <li><a href="#papers">Papers / Conferences</a></li>
-                <li><a href="#activities">Activities / Certifications</a></li>
+                <li><a href="#development" data-category="development">Development</a></li>
+                <li><a href="#ctf" data-category="ctf">CTF / Wargame</a></li>
+                <li><a href="#bugbounty" data-category="bugbounty">Bug Bounty</a></li>
+                <li><a href="#technical" data-category="technical">Technical Notes</a></li>
+                <li><a href="#papers" data-category="papers">Papers / Conferences</a></li>
+                <li><a href="#activities" data-category="activities">Activities / Certifications</a></li>
             </ul>
         </aside>
 
         <section id="posts">
 
             <div class="posts-header">
-                <h2>Recent Posts</h2>
-                <span>Latest updates</span>
+                <h2 id="section-title">Recent Posts</h2>
+                <span id="section-description">Latest updates</span>
             </div>
 
-            <article class="post" id="development">
-                <div class="category">DEVELOPMENT</div>
-                <h3>게시글 제목</h3>
-                <time datetime="2026-11-10">2026.11.10</time>
-            </article>
-
-            <article class="post" id="ctf">
-                <div class="category">CTF / WARGAME</div>
-                <h3>CTF 문제 풀이 기록</h3>
-                <time datetime="2026-11-09">2026.11.09</time>
-            </article>
-
-            <article class="post" id="bugbounty">
-                <div class="category">BUG BOUNTY</div>
-                <h3>웹 취약점 분석 기초</h3>
-                <time datetime="2026-11-08">2026.11.08</time>
-            </article>
-
-            <article class="post" id="technical">
-                <div class="category">TECHNICAL NOTES</div>
-                <h3>명령어 정리</h3>
-                <time datetime="2026-11-07">2026.11.07</time>
-            </article>
-
-            <article class="post" id="papers">
-                <div class="category">PAPERS / CONFERENCES</div>
-                <h3>게시글 제목</h3>
-                <time datetime="2026-11-06">2026.11.06</time>
-            </article>
-
-            <article class="post" id="activities">
-                <div class="category">ACTIVITIES / CERTIFICATIONS</div>
-                <h3>게시글 제목</h3>
-                <time datetime="2026-11-05">2026.11.05</time>
-            </article>
+            <div id="posts-list">
+                게시글을 불러오는 중...
+            </div>
 
         </section>
+
     </div>
 </main>
 
@@ -324,120 +341,243 @@ footer {
     © 2026 mellow. All rights reserved.
 </footer>
 
-<section id="posts-section" class="posts-section">
-  <h2>Latest Posts</h2>
-  <p>나의 학습 기록</p>
-  <div id="posts-list">게시글을 불러오는 중...</div>
-</section>
-
-<style>
-.posts-section {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 30px 20px;
-}
-.posts-section h2 {
-  margin-bottom: 8px;
-}
-#posts-list {
-  display: grid;
-  gap: 16px;
-  margin-top: 24px;
-}
-.post-card {
-  padding: 20px;
-  border: 1px solid #dce3d8;
-  border-radius: 12px;
-  background: #fff;
-}
-.post-card h3 {
-  margin: 0 0 8px;
-}
-.post-meta {
-  color: #829080;
-  font-size: 13px;
-  margin-bottom: 12px;
-}
-.post-card details summary {
-  cursor: pointer;
-  color: #647b65;
-  font-size: 14px;
-}
-.post-content {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  line-height: 1.7;
-  margin-top: 16px;
-  font-family: inherit;
-}
-</style>
-
 <script>
-async function loadPosts() {
-  const list = document.getElementById("posts-list");
-  const api = "https://api.github.com/repos/jiyeon5418/mellow.github.io/contents/posts";
+const API = "https://api.github.com/repos/jiyeon5418/mellow.github.io/contents/posts";
 
-  try {
-    const response = await fetch(api);
-    if (!response.ok) throw new Error("게시글 목록을 가져오지 못했습니다.");
+const categories = {
+    development: "Development",
+    ctf: "CTF / Wargame",
+    bugbounty: "Bug Bounty",
+    technical: "Technical Notes",
+    papers: "Papers / Conferences",
+    activities: "Activities / Certifications"
+};
 
-    const files = await response.json();
-    const markdownFiles = files.filter(file => file.name.endsWith(".md"));
+let allPosts = [];
+let currentCategory = "";
 
-    if (markdownFiles.length === 0) {
-      list.textContent = "아직 작성된 게시글이 없습니다.";
-      return;
+function cleanValue(value) {
+    value = value.trim();
+
+    if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+    ) {
+        value = value.slice(1, -1);
     }
 
-    list.innerHTML = "";
-
-    for (const file of markdownFiles) {
-      const res = await fetch(file.download_url);
-      const markdown = await res.text();
-
-      const match = markdown.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
-
-      let title = file.name.replace(".md", "");
-      let category = "기타";
-      let date = "";
-      let content = markdown;
-
-      if (match) {
-        const metadata = match[1];
-        content = match[2];
-
-        title = metadata.match(/^title:\s*"?(.+?)"?\s*$/m)?.[1] || title;
-        category = metadata.match(/^category:\s*"?(.+?)"?\s*$/m)?.[1] || category;
-        date = metadata.match(/^date:\s*(.+)$/m)?.[1] || "";
-      }
-
-      const card = document.createElement("article");
-      card.className = "post-card";
-
-      const heading = document.createElement("h3");
-      heading.textContent = title;
-
-      const meta = document.createElement("div");
-      meta.className = "post-meta";
-      meta.textContent = `${category} · ${date}`;
-
-      const details = document.createElement("details");
-      const summary = document.createElement("summary");
-      summary.textContent = "게시글 읽기";
-
-      const body = document.createElement("div");
-      body.className = "post-content";
-      body.textContent = content.trim();
-
-      details.append(summary, body);
-      card.append(heading, meta, details);
-      list.appendChild(card);
-    }
-  } catch (error) {
-    list.textContent = "게시글을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.";
-    console.error(error);
-  }
+    return value.replace(/\\"/g, '"');
 }
+
+function parsePost(markdown, filename) {
+    const match = markdown.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n?([\s\S]*)$/);
+
+    let metadata = "";
+    let content = markdown;
+
+    if (match) {
+        metadata = match[1];
+        content = match[2];
+    }
+
+    function getField(name, fallback = "") {
+        const result = metadata.match(new RegExp("^" + name + ":\\\\s*(.*)$", "m"));
+        return result ? cleanValue(result[1]) : fallback;
+    }
+
+    return {
+        file: filename,
+        title: getField("title", filename.replace(/\.md$/i, "")),
+        category: getField("category", "기타"),
+        date: getField("date", ""),
+        content: content.trim()
+    };
+}
+
+async function loadPosts() {
+    const list = document.getElementById("posts-list");
+
+    try {
+        const response = await fetch(API);
+
+        if (!response.ok) {
+            throw new Error("GitHub API 오류");
+        }
+
+        const files = await response.json();
+        const markdownFiles = files.filter(file =>
+            file.name.toLowerCase().endsWith(".md")
+        );
+
+        const results = await Promise.all(
+            markdownFiles.map(async file => {
+                const res = await fetch(file.download_url);
+
+                if (!res.ok) {
+                    throw new Error("게시글 파일을 읽지 못했습니다.");
+                }
+
+                const markdown = await res.text();
+                return parsePost(markdown, file.name);
+            })
+        );
+
+        allPosts = results.sort((a, b) =>
+            b.date.localeCompare(a.date)
+        );
+
+        renderRoute();
+
+    } catch (error) {
+        list.textContent = "게시글을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.";
+        console.error(error);
+    }
+}
+
+function renderRoute() {
+    const hash = decodeURIComponent(location.hash.slice(1));
+
+    if (hash.startsWith("post=")) {
+        const filename = hash.slice(5);
+        const post = allPosts.find(item => item.file === filename);
+
+        if (post) {
+            showPost(post, false);
+            return;
+        }
+    }
+
+    if (categories[hash]) {
+        showCategory(hash);
+    } else {
+        showCategory("");
+    }
+}
+
+function showCategory(key = "") {
+    currentCategory = key;
+
+    const category = categories[key];
+    const posts = category
+        ? allPosts.filter(post =>
+            post.category.toLowerCase() === category.toLowerCase()
+        )
+        : allPosts;
+
+    document.getElementById("section-title").textContent =
+        category || "Recent Posts";
+
+    document.getElementById("section-description").textContent =
+        category ? "Category Posts" : "Latest updates";
+
+    document.querySelectorAll("[data-category]").forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.dataset.category === key
+        );
+    });
+
+    const list = document.getElementById("posts-list");
+    list.replaceChildren();
+
+    if (posts.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty-message";
+        empty.textContent = "아직 작성된 게시글이 없습니다.";
+        list.appendChild(empty);
+        return;
+    }
+
+    posts.forEach(post => {
+        const card = document.createElement("article");
+        card.className = "post-card";
+
+        const categoryLabel = document.createElement("div");
+        categoryLabel.className = "post-category";
+        categoryLabel.textContent = post.category.toUpperCase();
+
+        const heading = document.createElement("h3");
+        const link = document.createElement("a");
+
+        link.href = "#post=" + encodeURIComponent(post.file);
+        link.textContent = post.title;
+
+        link.addEventListener("click", event => {
+            event.preventDefault();
+
+            history.pushState(
+                { post: post.file },
+                "",
+                "#post=" + encodeURIComponent(post.file)
+            );
+
+            showPost(post, false);
+        });
+
+        heading.appendChild(link);
+
+        const meta = document.createElement("div");
+        meta.className = "post-meta";
+        meta.textContent = post.date;
+
+        card.append(categoryLabel, heading, meta);
+        list.appendChild(card);
+    });
+}
+
+function showPost(post, updateHistory = false) {
+    if (updateHistory) {
+        history.pushState(
+            { post: post.file },
+            "",
+            "#post=" + encodeURIComponent(post.file)
+        );
+    }
+
+    document.getElementById("section-title").textContent = "Post";
+    document.getElementById("section-description").textContent = "Reading";
+
+    document.querySelectorAll("[data-category]").forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.dataset.category === currentCategory
+        );
+    });
+
+    const list = document.getElementById("posts-list");
+    list.replaceChildren();
+
+    const back = document.createElement("button");
+    back.className = "back-button";
+    back.textContent = "← 게시글 목록으로";
+
+    back.addEventListener("click", () => {
+        location.hash = currentCategory || "posts";
+    });
+
+    const category = document.createElement("div");
+    category.className = "detail-category";
+    category.textContent = post.category.toUpperCase();
+
+    const title = document.createElement("h1");
+    title.className = "detail-title";
+    title.textContent = post.title;
+
+    const date = document.createElement("div");
+    date.className = "detail-date";
+    date.textContent = post.date;
+
+    const content = document.createElement("div");
+    content.className = "post-content";
+    content.textContent = post.content;
+
+    list.append(back, category, title, date, content);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+window.addEventListener("hashchange", renderRoute);
+window.addEventListener("popstate", renderRoute);
 
 loadPosts();
 </script>
