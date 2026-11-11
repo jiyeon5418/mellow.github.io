@@ -183,7 +183,47 @@ button:hover {
 <script>
 document.getElementById("postForm").addEventListener("submit", function(e) {
     e.preventDefault();
-    alert("글쓰기 화면 테스트 완료! GitHub 저장 기능은 다음 단계에서 연결합니다.");
+    const title = document.querySelector("#title").value.trim();
+const category = document.querySelector("#category").value;
+const content = document.querySelector("#content").value.trim();
+
+if (!title || !content) {
+    alert("제목과 내용을 입력해 주세요.");
+    return;
+}
+
+const date = new Date();
+const dateText = date.toISOString().slice(0, 10);
+const fileName = title
+    .replace(/[\\/:*?"<>|]/g, "")
+    .replace(/\s+/g, "-")
+    .slice(0, 50);
+
+const markdown = `---
+title: "${title.replace(/"/g, '\\"')}"
+category: "${category}"
+date: "${dateText}"
+---
+
+# ${title}
+
+${content}
+`;
+
+const blob = new Blob([markdown], {
+    type: "text/markdown;charset=utf-8"
+});
+
+const url = URL.createObjectURL(blob);
+const link = document.createElement("a");
+
+link.href = url;
+link.download = `${dateText}-${fileName}.md`;
+link.click();
+
+URL.revokeObjectURL(url);
+
+alert("게시글 파일이 다운로드되었습니다!\nGitHub posts 폴더에 업로드해 주세요.");
 });
 </script>
 
