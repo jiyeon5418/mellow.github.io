@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me | mellow</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #F7F6F0;
+    color: #292d2a;
+    font-family: Arial, "Noto Sans KR", sans-serif;
+    line-height: 1.8;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    height: 76px;
+    border-bottom: 1px solid #e8e7df;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 9%;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #63866c;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    color: #777;
+}
+
+nav a:hover {
+    color: #63866c;
+}
+
+.container {
+    max-width: 950px;
+    margin: 80px auto;
+    padding: 0 25px;
+}
+
+.label {
+    color: #63866c;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 38px;
+    letter-spacing: -1.5px;
+    margin: 15px 0;
+}
+
+.intro {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 55px;
+}
+
+section {
+    margin-bottom: 45px;
+}
+
+h2 {
+    font-size: 19px;
+    border-bottom: 1px solid #deded5;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 15px;
+    margin: 13px 0;
+    font-size: 14px;
+}
+
+.info strong {
+    color: #63866c;
+}
+
+ul {
+    padding-left: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+footer {
+    border-top: 1px solid #e8e7df;
+    text-align: center;
+    padding: 30px;
+    color: #999;
+    font-size: 12px;
+}
+
+@media(max-width:600px) {
+    header {
+        padding: 0 20px;
+    }
+
+    nav {
+        gap: 14px;
+        font-size: 12px;
+    }
+
+    .container {
+        margin: 50px auto;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .info {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html" class="logo">mellow<span>.</span></a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="index.html#categories">Categories</a>
+        <a href="index.html#posts">Posts</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <div class="label">ABOUT ME</div>
+
+    <h1>안녕하세요, mellow입니다.</h1>
+
+    <p class="intro">
+        AI와 사이버보안을 공부하며 새로운 기술을 배우고 탐구하려고합니다.
+        배운 내용을 직접 실습하고 기록하며 성장하는 과정을 담고 있습니다.
+    </p>
+
+    <section>
+        <h2>Profile</h2>
+
+        <div class="info">
+            <strong>Major</strong>
+            <span>AI Cyber Security</span>
+        </div>
+
+        <div class="info">
+            <strong>Interest</strong>
+            <span>Cyber Security, AI Security, Web Security</span>
+        </div>
+
+        <div class="info">
+            <strong>Currently Learning</strong>
+            <span>Linux, Python, CTF / Wargame</span>
+        </div>
+    </section>
+
+    <section>
+        <h2>Interests</h2>
+        <ul>
+            <li>웹 보안 및 취약점 분석</li>
+            <li>CTF 문제 풀이와 보안 실습</li>
+            <li>인공지능과 사이버보안의 접점 탐구</li>
+            <li>새로운 기술을 배우고 직접 구현하기</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Goal</h2>
+        <p class="intro">
+            이론에 그치지 않고 직접 실습하며 문제를 해결하는 능력을 기르는 것이 목표입니다.
+            꾸준히 공부하고 기록하며 저만의 블로그를 완성하려고합니다.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 mellow. All rights reserved.
+</footer>
+
+</body>
+</html>
